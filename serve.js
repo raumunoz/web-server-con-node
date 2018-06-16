@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 var app = express();
 const fs = require('fs');
+const port=process.env.PORT|| 3000;
 //configuracion de expres para que use hbs como view engine
 app.use((req, res, next) => {
     res.render('maintenance.hbs');
@@ -62,4 +63,6 @@ app.get('/about', (req, res) => {
         currentYear: new Date().getFullYear()
     });
 });
-app.listen(3000);
+app.listen(port,()=>{
+    console.log(`Server is up on port ${port}`);
+});
