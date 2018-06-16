@@ -4,9 +4,7 @@ var app = express();
 const fs = require('fs');
 const port=process.env.PORT|| 3000;
 //configuracion de expres para que use hbs como view engine
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-})
+
 hbs.registerPartials(__dirname + '/views/partials')
 
 hbs.registerHelper('getCurrentYear', () => {
@@ -60,6 +58,14 @@ app.get('/about', (req, res) => {
     //res.send('Acerca de');
     res.render('about.hbs', {
         pageTitle: 'Página acerca de',
+        currentYear: new Date().getFullYear()
+    });
+});
+app.get('/proyectos', (req, res) => {
+    //res.send('Acerca de');
+    res.render('proyectos.hbs', {
+        proyecto: 'proyecto uno',
+        pageTitle: 'Proyectos',
         currentYear: new Date().getFullYear()
     });
 });
